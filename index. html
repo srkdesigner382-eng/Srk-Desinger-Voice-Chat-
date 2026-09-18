@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SRK Designer</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#090909;
+  color:#fff;
+}
+header{
+  text-align:center;
+  padding:35px 18px;
+  background:linear-gradient(180deg,#242424,#090909);
+}
+.logo{
+  width:145px;height:145px;
+  object-fit:contain;
+  border-radius:50%;
+  border:2px solid #fff;
+  margin-bottom:15px;
+}
+h1{font-size:32px}
+.tag{color:#ccc;margin-top:8px}
+.bio{
+  max-width:850px;
+  margin:18px auto 0;
+  line-height:1.7;
+  color:#ddd;
+  font-size:15px;
+}
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  padding:12px;
+  background:#111;
+  border-bottom:1px solid #333;
+}
+nav button{
+  padding:10px 15px;
+  border-radius:25px;
+  border:1px solid #555;
+  background:#1d1d1d;
+  color:#fff;
+  cursor:pointer;
+}
+nav button:hover,nav button.active{
+  background:#fff;
+  color:#000;
+}
+.container{
+  width:94%;
+  max-width:1100px;
+  margin:auto;
+  padding:35px 0;
+}
+.title{text-align:center;font-size:27px;margin-bottom:8px}
+.sub{text-align:center;color:#999;margin-bottom:25px}
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:12px;
+  margin-bottom:40px;
+}
+.service{
+  background:#161616;
+  border:1px solid #333;
+  padding:20px 10px;
+  border-radius:18px;
+  text-align:center;
+  cursor:pointer;
+}
+.service:hover{transform:translateY(-3px)}
+.icon{font-size:35px;margin-bottom:8px}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+}
+.section{
+  margin-bottom:45px;
+}
+.card{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:15px;
+  overflow:hidden;
+}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  cursor:pointer;
+}
+.info{padding:12px}
+.info h3{margin-bottom:10px}
+.buttons{
+  display:flex;
+  gap:8px;
+}
+.buttons button,.buttons a{
+  flex:1;
+  padding:9px;
+  border:0;
+  border-radius:8px;
+  background:#292929;
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  cursor:pointer;
+}
+.upload{
+  text-align:center;
+  padding:20px;
+  margin-bottom:20px;
+  background:#121212;
+  border:1px dashed #555;
+  border-radius:15px;
+}
+.upload input{margin-top:12px;color:#fff}
+.support{
+  text-align:center;
+  background:#151515;
+  border:1px solid #333;
+  border-radius:20px;
+  padding:28px 15px;
+}
+.contact{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.contact a{
+  padding:12px 20px;
+  background:#292929;
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+}
+footer{
+  text-align:center;
+  color:#777;
+  padding:25px;
+  border-top:1px solid #222;
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.94);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal img{
+  max-width:95%;
+  max-height:85vh;
+  object-fit:contain;
+}
+.close{
+  position:absolute;
+  right:25px;
+  top:15px;
+  font-size:40px;
+  cursor:pointer;
+}
+@media(max-width:600px){
+  h1{font-size:27px}
+  .logo{width:120px;height:120px}
+  .gallery{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card img{height:190px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<!-- HOME LOGO -->
+<img id="homeLogo" class="logo"
+src=""
+alt="SRK Designer Logo">
+
+<h1>SRK Designer</h1>
+
+<div class="tag">
+Professional Design & Voice Chat Application Services
+</div>
+
+<div class="bio">
+SRK Designer for Premium Themes, Logos, SVG Files,
+Customised Gifts, Frames and Banners.
+<br>
+Voice Chat Application Manager, Super Admin & Admin Services.
+Application Support and Management Solutions for 2000+ Clients
+and 10,000+ Hosts.
+<br>
+Perfect Service & Support for Voice Chat Applications.
+</div>
+
+</header>
+
+
+<nav>
+<button class="active" onclick="show('home',this)">🏠 Home</button>
+<button onclick="show('banner',this)">🖼️ Banner</button>
+<button onclick="show('logo',this)">🎨 Logo</button>
+<button onclick="show('theme',this)">✨ Theme</button>
+<button onclick="show('frame',this)">🪟 Frame</button>
+<button onclick="show('gif',this)">🎁 GIF</button>
+<button onclick="show('svg',this)">📁 SVG</button>
+</nav>
+
+
+<div class="container">
+
+<!-- SERVICES -->
+
+<h2 class="title">Our Services</h2>
+<p class="sub">Choose your service</p>
+
+<div class="services">
+
+<div class="service" onclick="show('banner')">
+<div class="icon">🖼️</div>
+Banner
+</div>
+
+<div class="service" onclick="show('logo')">
+<div class="icon">🎨</div>
+Logo
+</div>
+
+<div class="service" onclick="show('theme')">
+<div class="icon">✨</div>
+Theme
+</div>
+
+<div class="service" onclick="show('frame')">
+<div class="icon">🪟</div>
+Frame
+</div>
+
+<div class="service" onclick="show('gif')">
+<div class="icon">🎁</div>
+Customised GIF
+</div>
+
+<div class="service" onclick="show('svg')">
+<div class="icon">📁</div>
+SVG Files
+</div>
+
+</div>
+
+
+<!-- BANNER -->
+
+<section id="banner" class="section">
+
+<h2 class="title">Banner Designs</h2>
+<p class="sub">9:16 • 1:1 • Other Sizes</p>
+
+<div class="upload">
+<b>Add Banner Images</b><br>
+<input type="file"
+accept="image/*"
+multiple
+onchange="addImages(event,'bannerGallery')">
+</div>
+
+<div id="bannerGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- LOGO -->
+
+<section id="logo" class="section">
+
+<h2 class="title">Logo Designs</h2>
+<p class="sub">Creative & Professional Logos</p>
+
+<div class="upload">
+<b>Add Logo Images</b><br>
+<input type="file"
+accept="image/*"
+multiple
+onchange="addImages(event,'logoGallery')">
+</div>
+
+<div id="logoGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- THEME -->
+
+<section id="theme" class="section">
+
+<h2 class="title">Themes</h2>
+<p class="sub">Premium Theme Designs</p>
+
+<div class="upload">
+<b>Add Theme Images</b><br>
+<input type="file"
+accept="image/*"
+multiple
+onchange="addImages(event,'themeGallery')">
+</div>
+
+<div id="themeGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- FRAME -->
+
+<section id="frame" class="section">
+
+<h2 class="title">Frames</h2>
+<p class="sub">Custom Frame Designs</p>
+
+<div class="upload">
+<b>Add Frame Images</b><br>
+<input type="file"
+accept="image/*"
+multiple
+onchange="addImages(event,'frameGallery')">
+</div>
+
+<div id="frameGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- GIF -->
+
+<section id="gif" class="section">
+
+<h2 class="title">Customised GIF</h2>
+<p class="sub">Custom Animated Designs</p>
+
+<div class="upload">
+<b>Add GIF Files</b><br>
+<input type="file"
+accept="image/gif"
+multiple
+onchange="addImages(event,'gifGallery')">
+</div>
+
+<div id="gifGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- SVG -->
+
+<section id="svg" class="section">
+
+<h2 class="title">SVG Files</h2>
+<p class="sub">Professional SVG Designs</p>
+
+<div class="upload">
+<b>Add SVG Preview Images</b><br>
+<input type="file"
+accept="image/*"
+multiple
+onchange="addImages(event,'svgGallery')">
+</div>
+
+<div id="svgGallery" class="gallery"></div>
+
+</section>
+
+
+<!-- SUPPORT -->
+
+<div class="support">
+
+<h2>📩 Support & Contact</h2>
+
+<p style="color:#bbb;margin-top:10px">
+For design orders, customised designs and
+voice chat application support.
+</p>
+
+<div class="contact">
+
+<a href="mailto:sharukhbhai654321@gmail.com">
+📧 Email Support
+</a>
+
+<a href="https://wa.me/919528794938"
+target="_blank">
+💬 WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 SRK Designer • All Rights Reserved
+</footer>
+
+
+<!-- IMAGE POPUP -->
+
+<div id="modal"
+class="modal"
+onclick="closeModal()">
+
+<span class="close">&times;</span>
+
+<img id="modalImg" src="" alt="Preview">
+
+</div>
+
+
+<script>
+
+function show(id,btn){
+
+document.querySelectorAll(".section")
+.forEach(x=>x.style.display="none");
+
+if(id==="home"){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}else{
+
+let el=document.getElementById(id);
+
+if(el){
+el.style.display="block";
+
+el.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+}
+
+document.querySelectorAll("nav button")
+.forEach(x=>x.classList.remove("active"));
+
+if(btn) btn.classList.add("active");
+
+}
+
+
+function addImages(event,galleryId){
+
+const gallery=document.getElementById(galleryId);
+
+Array.from(event.target.files).forEach(file=>{
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<img src="${e.target.result}"
+onclick="openModal('${e.target.result}')">
+
+<div class="info">
+
+<h3>${file.name}</h3>
+
+<div class="buttons">
+
+<button onclick="openModal('${e.target.result}')">
+View
+</button>
+
+<a href="${e.target.result}"
+download="${file.name}">
+Download
+</a>
+
+</div>
+
+</div>
+
+`;
+
+gallery.appendChild(card);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+function openModal(src){
+
+document.getElementById("modalImg").src=src;
+
+document.getElementById("modal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape") closeModal();
+
+});
+
+
+// START WITH ALL SECTIONS HIDDEN
+window.onload=function(){
+
+document.querySelectorAll(".section")
+.forEach(x=>x.style.display="none");
+
+};
+
+</script>
+
+</body>
+</html>
